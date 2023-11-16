@@ -39,6 +39,14 @@ function getStringLength(value) {
  */
 function isString(/* value */) {
   throw new Error('Not implemented');
+  // if (value === false) {
+  //   return false;
+  // } else if (typeof value.valueOf() === 'string') {
+  //   return true;
+  // }
+  // return value === false ? false : typeof value.valueOf() === 'string' ? true : false;
+  // if (value === false) return false;
+  // if (typeof value.valueOf() === 'string') return true;
 }
 
 /**
@@ -272,8 +280,9 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  const arr = str.split('').sort((a, b) => a.localeCompare(b));
+  return arr.join('');
 }
 
 /**
@@ -288,8 +297,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -306,8 +315,16 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const string = str.toLowerCase();
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
+  let count = 0;
+  for (let i = 0; i <= str.length; i += 1) {
+    if (vowels.includes(string[i])) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
@@ -323,8 +340,19 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const string = str
+    .split(' ')
+    .join('')
+    .toLowerCase()
+    .replaceAll(',', '')
+    .replaceAll('!', '')
+    .replaceAll('?', '');
+  let reverseStr = '';
+  for (let i = string.length - 1; i >= 0; i -= 1) {
+    reverseStr += string[i];
+  }
+  return string === reverseStr;
 }
 
 /**
@@ -385,8 +413,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -414,8 +442,8 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.slice(1, str.length - 1);
 }
 
 /**
@@ -433,8 +461,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
